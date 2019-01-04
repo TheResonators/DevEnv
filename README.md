@@ -1,1 +1,1 @@
-# Development Environment For the resonators platform
+# Development Environment For The Resonators Platform
