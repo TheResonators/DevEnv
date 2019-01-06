@@ -1,0 +1,29 @@
+version: "3"
+
+volumes:
+  db-data:
+      external: false
+
+services:
+
+  db:
+      image: postgres
+      volumes:
+          - db-data:/var/lib/postgresql/db-data
+
+  client:
+      build: ../resonators-client/
+      volumes:
+        - ../resonators-client/src:/usr/app/src
+      environment:
+        - NODE_PATH=/usr/app/data/node_modules
+      ports:
+        - 8000:8000
+
+  server:
+      build: ../resonators-server/
+      volumes:
+        - ../resonators-server/src:/usr/app/src
+      ports:
+        - 8080:8080
+
